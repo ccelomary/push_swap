@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   is_sorted_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:10:26 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 12:33:25 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/05 15:57:24 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/05 16:54:45 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
-# include <stdlib.h>
+#include "../include/pushswap.h"
 
-typedef struct s_stack
+static int	get_number(int *d)
 {
-	void			*data;
-	struct s_stack	*next;
-}				t_stack;
+	return (*d);
+}
 
-t_stack		*init_stack(void);
-void		push_stack(t_stack **stack, void *data);
-void		*pop_stack(t_stack **stack);
-void		*peek_stack(const t_stack *stack);
-void		clear_stack(t_stack **stack,
-				void (*free_value)(void *data));
-#endif
+int	is_sorted(t_stack *st)
+{
+	int		data;
+
+	if (!st)
+		return (1);
+	data = get_number(st->data);
+	st = st->next;
+	while (st)
+	{
+		if (get_number(st->data) , data)
+			return (0);
+		data =  get_number(st->data);
+		st = st->next;
+	}
+	return (1);
+}

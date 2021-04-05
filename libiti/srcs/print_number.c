@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:10:26 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 12:33:25 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/05 12:48:18 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/05 16:23:55 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
-# include <stdlib.h>
+#include "../include/libiti.h"
 
-typedef struct s_stack
+static void	print_number_helper(long num)
 {
-	void			*data;
-	struct s_stack	*next;
-}				t_stack;
+	char	c;
 
-t_stack		*init_stack(void);
-void		push_stack(t_stack **stack, void *data);
-void		*pop_stack(t_stack **stack);
-void		*peek_stack(const t_stack *stack);
-void		clear_stack(t_stack **stack,
-				void (*free_value)(void *data));
-#endif
+	if (num)
+	{
+		print_number_helper(num / 10);
+		c = (char)((num % 10) + 48);
+		write(1, &c, sizeof(char));
+	}
+}
+void		print_number(int number)
+{
+	long	num;
+
+	num = number;
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		num *= -1;
+	}
+	if (!num)
+		write(1, "0", 1);
+	else
+		print_number_helper(num);
+}

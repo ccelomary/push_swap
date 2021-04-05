@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   operation_stack2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:10:26 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 12:33:25 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/05 15:47:30 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/05 15:55:22 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
-# include <stdlib.h>
+#include "../include/pushswap.h"
 
-typedef struct s_stack
+
+void		swap_a_and_b(t_stack **a, t_stack **b)
 {
-	void			*data;
-	struct s_stack	*next;
-}				t_stack;
+	swap_first2(a);
+	swap_first2(b);
+}
 
-t_stack		*init_stack(void);
-void		push_stack(t_stack **stack, void *data);
-void		*pop_stack(t_stack **stack);
-void		*peek_stack(const t_stack *stack);
-void		clear_stack(t_stack **stack,
-				void (*free_value)(void *data));
-#endif
+void		rotate_up_ab(t_stack **a, t_stack **b)
+{
+	rotate_stack_up(a);
+	rotate_stack_up(b);
+}
+
+void		rotate_down_ab(t_stack **a, t_stack **b)
+{
+	rotate_stack_down(a);
+	rotate_stack_down(b);
+}

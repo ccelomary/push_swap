@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libiti.h                                           :+:      :+:    :+:   */
+/*   ft_pushswap.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 12:47:29 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 18:20:52 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/06 17:36:18 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/06 18:31:52 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBITI_H
-# define LIBITI_H
-# include <unistd.h>
-# include <stdlib.h>
+#ifndef FT_PUSHSWAP_H
+# define FT_PUSHSWAP_H
+#include "../../ft_push_swap/include/pushswap.h"
+#include "../../dt/hash_table/hash_map.h"
+typedef enum e_operations
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}		t_operations;
 
-void		print_number(int number);
-int			string2number(const char *string);
-int			isequal(const char *s1, const char *s2);
-int			isdigits(char c);
-int			is_number(const char *number);
-void		print_error(const char *error_str);
-char		*strjoinchar(char *line, char c);
-char		*ft_strdup(const char *string);
+t_map	*init_operations(void);
+char	*get_operation(t_map *map, t_operations oper);
 #endif

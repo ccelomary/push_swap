@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:05:07 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 15:05:58 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/06 15:49:33 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 			if (!operation)
 				break ;
 			execute_operation(operation, &a, &b);
+			print2_stack(a, b);
 			free(operation);
 		}
 		if (is_sorted(a) && !b)

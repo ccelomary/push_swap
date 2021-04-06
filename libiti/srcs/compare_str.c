@@ -1,13 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   compare_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:58:41 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 15:05:30 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/06 10:44:36 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/06 10:49:20 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int			isequal(const char *s1, const char *s2)
+{
+	unsigned int	iterator;
 
+	iterator = 0;
+	while (s1[iterator] && s2[iterator])
+	{
+		if (s1[iterator] != s2[iterator])
+			return (0);
+		iterator++;
+	}
+	if (s1[iterator] || s2[iterator])
+		return (0);
+	return (1);
+}

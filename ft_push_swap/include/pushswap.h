@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 13:05:01 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 17:44:46 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:57:40 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,7 @@ void		swap_a_and_b(t_stack **a, t_stack **b);
 void		rotate_up_ab(t_stack **a, t_stack **b);
 void		rotate_down_ab(t_stack **a, t_stack **b);
 int			is_sorted(t_stack *st);
+int			insert_numbers(t_stack **stack, int argc, char *numbers[]);
+void		execute_operation(const char *operation, t_stack **a, t_stack **b);
+
 #endif

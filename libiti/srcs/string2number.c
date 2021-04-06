@@ -6,11 +6,11 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 16:10:24 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 16:28:47 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/06 11:33:55 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	isdigits(char c)
+int	isdigits(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

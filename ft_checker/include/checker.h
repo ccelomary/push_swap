@@ -1,13 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:58:41 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 15:05:30 by mel-omar         ###   ########.fr       */
+/*   Created: 2021/04/06 15:03:24 by mel-omar          #+#    #+#             */
+/*   Updated: 2021/04/06 15:04:52 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#ifndef CHECKER_H
+# define CHECKER_H
+#include "../../stack/include/stack.h"
+#include "../../libiti/include/libiti.h"
+#include "../../readline/include/readline.h"
+#include "../../ft_push_swap/include/pushswap.h"
+#endif

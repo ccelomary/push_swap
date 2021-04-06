@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:55:15 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 15:41:51 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/06 11:02:47 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,18 @@ void	rotate_stack_up(t_stack **stack)
 void	rotate_stack_down(t_stack **stack)
 {
 	void	*data;
+	void	*temp_d;
 	t_stack	*temp;
 
 	if (*stack)
 	{
 		temp = *stack;
+		data = temp->data;
 		while (temp->next)
 		{
-			data = temp->next->data;
-			temp->next->data = temp->data;
+			temp_d = temp->next->data;
+			temp->next->data = data;
+			data = temp_d;
 			temp = temp->next;
 		}
 		(*stack)->data = data;

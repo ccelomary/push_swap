@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:47:29 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 18:20:52 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/12 14:45:25 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int			is_number(const char *number);
 void		print_error(const char *error_str);
 char		*strjoinchar(char *line, char c);
 char		*ft_strdup(const char *string);
+size_t		ft_cstrlen(const char *str);
 #endif

@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_opperation.c                                 :+:      :+:    :+:   */
+/*   apply_operation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:55:30 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 14:57:50 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/12 15:07:18 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pushswap.h"
 
+static void	free_dt(void *kv)
+{
+	t_key_value		*key_value;
+
+	key_value = (t_key_value *)kv;
+
+	free(key_value->key);
+	free(key_value);
+}
+
 int		insert_numbers(t_stack **stack, int argc, char *numbers[])
 {
+	t_map	*repeated;
+
+	repeated = init_map();
 	while (--argc > 0)
 	{
-		if (is_number(numbers[argc]))
+		if (is_number(numbers[argc]) && !get_value(repeated, numbers[argc], ft_cstrlen(numbers[argc])))
+		{
+			set_value(repeated, numbers[argc], "", ft_cstrlen(numbers[argc]));
 			push_number(stack, string2number(numbers[argc]));
+		}
 		else
 		{
+			clear_map(&repeated, free_dt);
 			print_error("ERROR\n");
 			return (1);
 		}
 	}
+	clear_map(&repeated, free_dt);
 	return (0);
 }
 

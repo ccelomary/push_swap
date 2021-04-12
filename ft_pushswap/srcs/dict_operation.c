@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 18:09:09 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 18:32:01 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/12 13:55:21 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_map	*init_operations(void)
 
 	operations = init_map();
 	set_operation(operations, SA, "sa");
-	set_operation(operations, SB, 'sb');
+	set_operation(operations, SB, "sb");
 	set_operation(operations, SS, "ss");
 	set_operation(operations, PA, "pa");
 	set_operation(operations, PB, "pb");

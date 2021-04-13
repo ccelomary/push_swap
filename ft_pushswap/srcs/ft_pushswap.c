@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/13 17:44:01 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:07:56 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,60 @@ size_t		count_length(t_stack *start, t_stack *end)
 	return (len);
 }
 
-/*
+
+void	copy2buffer(int *buffer, t_stack *start, t_stack *end)
+{
+	unsigned int	iter;
+
+	iter = 0;
+	while (start != end)
+	{
+		buffer[iter] = *((int *)start->data);
+		start = start->next;
+	}
+}
+
+void	sort_buffer(int *buffer, size_t len)
+{
+	int	tmp;
+	unsigned int	iter1;
+	unsigned int	iter2;
+
+	if (!len)
+		return ;
+
+	iter1 = 0;
+	while (iter1 < len - 1)
+	{
+		iter2 = iter1 + 1;
+		while (iter2 < len)
+		{
+			if (buffer[iter1] < buffer[iter2])
+			{
+				tmp = buffer[iter1];
+				buffer[iter1] = buffer[iter2];
+				buffer[iter2] = tmp;
+			}
+			iter2++;
+		}
+		iter1++;
+	}
+}
+
 int		pick_pivot(t_stack *start, t_stack *end)
 {
-	int	number;
+	size_t	len;
+	int		*buffer;
+	int		pivot;
+
+	len = count_length(start, end);
+	buffer = malloc(sizeof(int) * len);
+	copy2buffer(buffer, start, end);
+	sort_buffer(buffer, len);
+	free(buffer);
+	pivot = buffer[len / 2];
+	return (pivot);
 }
-*/
 
 int		main(int argc, char *argv[])
 {

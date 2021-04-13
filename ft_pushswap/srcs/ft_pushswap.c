@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/13 13:45:27 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/13 17:44:01 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,31 @@ int	*get_smallest(t_stack *stack)
 	return (peeked);
 }
 
+size_t		count_length(t_stack *start, t_stack *end)
+{
+	size_t	len;
+
+	len = 0;
+	while (start != end)
+	{
+		start = start->next;
+		len++;
+	}
+	return (len);
+}
+
+/*
+int		pick_pivot(t_stack *start, t_stack *end)
+{
+	int	number;
+}
+*/
+
 int		main(int argc, char *argv[])
 {
 	t_stack		*stack = init_stack();
 
-	if (!insert_numbers(&stack, argc, argv))
-		get_smallest(stack);
+	insert_numbers(&stack, argc, argv);
+	printf("%lu\n", count_length(stack, stack->next->next->next));
 	return (0);
 }

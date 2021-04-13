@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   additional_method.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-omar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 15:29:31 by mel-omar          #+#    #+#             */
-/*   Updated: 2020/02/09 15:44:38 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/13 12:48:03 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int				compare(const void *val1, const void *val2, size_t key_size)
 	v1 = (unsigned char *)val1;
 	v2 = (unsigned char *)val2;
 	iter = 0;
-	while (v1[iter] == v2[iter] && iter < key_size)
+	while (iter < key_size && v1[iter] == v2[iter])
 		iter++;
-	if (iter != key_size)
+	if (v1[iter] != v2[iter])
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 18:09:09 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/12 13:55:21 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/13 12:30:24 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	set_operation(t_map *map, t_operations oper, const char *value)
 {
-	set_value(map, &oper, value, sizeof(t_operations));
+	set_value(map, &oper, (char *)value, sizeof(t_operations));
 }
 
 t_map	*init_operations(void)

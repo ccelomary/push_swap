@@ -6,11 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:55:30 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/12 15:07:18 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/13 13:21:13 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pushswap.h"
+
+#include <stdio.h>
 
 static void	free_dt(void *kv)
 {

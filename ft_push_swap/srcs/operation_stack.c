@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:55:15 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 11:02:47 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/14 15:00:51 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,9 @@ void	push_number(t_stack **stack, int number)
 
 void	from_a2b(t_stack **a, t_stack **b)
 {
-	push_stack(b, pop_stack(a));
+	void	*data;
+
+	data = pop_stack(a);
+	if (data)
+		push_stack(b, data);
 }

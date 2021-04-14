@@ -6,12 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/13 18:07:56 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:35:07 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 #include <stdio.h>
+#include <time.h>
 
 int	*get_smallest(t_stack *stack)
 {
@@ -36,6 +37,8 @@ size_t		count_length(t_stack *start, t_stack *end)
 	size_t	len;
 
 	len = 0;
+	if (!start)
+		return (0);
 	while (start != end)
 	{
 		start = start->next;
@@ -54,6 +57,7 @@ void	copy2buffer(int *buffer, t_stack *start, t_stack *end)
 	{
 		buffer[iter] = *((int *)start->data);
 		start = start->next;
+		iter++;
 	}
 }
 
@@ -94,16 +98,55 @@ int		pick_pivot(t_stack *start, t_stack *end)
 	buffer = malloc(sizeof(int) * len);
 	copy2buffer(buffer, start, end);
 	sort_buffer(buffer, len);
-	free(buffer);
 	pivot = buffer[len / 2];
+	free(buffer);
 	return (pivot);
+}
+
+t_stack	*the_last(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
+}
+
+void	quicksort(t_stack **stack, t_stack *start, t_stack *end, t_stack **reverse_stack, char st)
+{
+	int		pivot;
+	void	*data;
+	void	*sd;
+	void	*ed;
+	size_t	len;
+
+	data = start->data;
+	pivot = pick_pivot(start, end);
+	while ((*stack)->data != data)
+		rotate_stack_up(stack);
+	data = end->data;
+	while ((*stack)->data != data)
+	{
+		printf("%p %p\n", (*stack)->data, data);
+		if (*((int *)(*stack)->data) < pivot)
+		{
+			start = (*stack)->data;
+			from_a2b(stack, reverse_stack);
+		}
+		else
+			rotate_stack_up(stack);
+		sleep(1);
+	}
+	end = (*stack)->data;
+	if (*((int *)data) < pivot)
+		from_a2b(stack, reverse_stack);
 }
 
 int		main(int argc, char *argv[])
 {
-	t_stack		*stack = init_stack();
-
-	insert_numbers(&stack, argc, argv);
-	printf("%lu\n", count_length(stack, stack->next->next->next));
+	t_stack		*a = init_stack();
+	t_stack		*b = init_stack();	
+	insert_numbers(&a, argc, argv);
+	quicksort(&a, a, the_last(a), &b);
 	return (0);
 }

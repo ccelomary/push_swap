@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 13:05:01 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/12 14:34:30 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/15 12:06:28 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@
 # include "../../libiti/include/libiti.h"
 # include "../../print/print.h"
 
+typedef struct s_data
+{
+	int		number;
+	int		chunk;
+}			t_data;
+
 void		printer_data(void *data);
 void		print2_stack(const t_stack *a, const t_stack *b);
 void		swap_first2(t_stack **stack);
 void		rotate_stack_up(t_stack **stack);
 void		rotate_stack_down(t_stack **stack);
-void		push_number(t_stack **stack, int number);
+void		push_number(t_stack **stack, int data);
 void		from_a2b(t_stack **a, t_stack **b);
 void		swap_a_and_b(t_stack **a, t_stack **b);
 void		rotate_up_ab(t_stack **a, t_stack **b);

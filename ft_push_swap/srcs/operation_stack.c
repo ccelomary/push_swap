@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:55:15 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/14 15:00:51 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/15 11:14:30 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ void	rotate_stack_down(t_stack **stack)
 
 void	push_number(t_stack **stack, int number)
 {
-	int		*data;
+	t_data		*data;
 
-	data = malloc(sizeof(int));
-	*data  = number;
+	data = malloc(sizeof(t_data));
+	data->number  = number;
+	data->chunk = 0;
 	push_stack(stack, data);
 }
 

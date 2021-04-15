@@ -6,15 +6,15 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 15:57:24 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 14:26:18 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/15 11:08:38 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pushswap.h"
 
-static int	get_number(int *d)
+static int	get_number(t_data *d)
 {
-	return (*d);
+	return (d->number);
 }
 
 int	is_sorted(t_stack *st)

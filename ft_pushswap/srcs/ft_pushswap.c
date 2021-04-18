@@ -6,13 +6,14 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/15 16:30:38 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:11:58 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 #include <stdio.h>
 #include <time.h>
+
 void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int a, int b), int *chun);
 int	*get_smallest(t_stack *stack)
 {
@@ -175,9 +176,6 @@ int		is_sorted2(t_stack *st,  int (*compare)(int a, int b))
 	while (st)
 	{
 		dt = st->data;
-		chunk = dt->chunk;
-		if (chunk != current_chunk)
-			break ;
 		if (!compare(data, get_number(st->data)))
 			return (0);
 		data =  get_number(st->data);
@@ -198,11 +196,28 @@ void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int
 		return ;
 	len = count_length(*stack);
 	if (len == 2)
+	{
 		rotate_stack_up(stack);
+	}
 	if (len <= 2)
+	{
+		data = (*stack)->data;
+		current_chunk = data->chunk;
+		chunk = current_chunk;
+		while (chunk == current_chunk)
+		{
+			data->chunk = *chun;
+			(*stack)->data = data;
+			from_a2b(stack, reverse_stack);
+			if (!*stack)
+				break;
+			data = (*stack)->data;
+			chunk = data->chunk;
+		}
 		return ;
+	}
 	pivot = pick_pivot(*stack);
-	printf("pivot --> %d\n", pivot);
+	printf("2pivot --> %d\n", pivot);
 	data = (*stack)->data;
 	current_chunk = data->chunk;
 	chunk = current_chunk;
@@ -218,12 +233,12 @@ void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int
 		else
 		{
 			rotate_stack_up(stack);
-			data = (*stack)->data;
-			chunk = data->chunk;
 		}
+		data = (*stack)->data;
+		chunk = data->chunk;
 	}
 	(*chun)++;
-	print2_stack(*reverse_stack, *stack);
+	//print2_stack(*reverse_stack, *stack);
 	quicksort2(stack, reverse_stack, check2,  chun);
 	quicksort(reverse_stack, stack, check1,  chun);
 }
@@ -243,7 +258,22 @@ void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int 
 		rotate_stack_up(stack);
 	}
 	if (len <= 2)
+	{
+		data = (*stack)->data;
+		current_chunk = data->chunk;
+		chunk = current_chunk;
+		while (chunk == current_chunk)
+		{
+			data->chunk = *chun;
+			(*stack)->data = data;
+			from_a2b(stack, reverse_stack);
+			if (!*stack)
+				break;
+			data = (*stack)->data;
+			chunk = data->chunk;
+		}
 		return ;
+	}
 	//data = (*stack)->data;
 	pivot = pick_pivot(*stack);
 	printf("pivot --> %d\n", pivot);
@@ -262,14 +292,14 @@ void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int 
 		else
 		{
 			rotate_stack_up(stack);
-			data = (*stack)->data;
-			chunk = data->chunk;
 		}
+		data = (*stack)->data;
+		chunk = data->chunk;
 	}
 	(*chun)++;
-	print2_stack(*stack, *reverse_stack);
+	//print2_stack(*stack, *reverse_stack);
 	quicksort(stack, reverse_stack, check1, chun);
-	//quicksort2(reverse_stack, stack, check2, chun);
+	quicksort2(reverse_stack, stack, check2, chun);
 }
 
 int		main(int argc, char *argv[])

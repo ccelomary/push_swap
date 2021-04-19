@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/17 15:11:58 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/19 16:45:36 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ int		check1(int a, int b)
 	return (a < b);
 }
 
-int	check2(int a, int b)
+int		check2(int a, int b)
 {
 	return (b < a);
 }
@@ -176,12 +176,54 @@ int		is_sorted2(t_stack *st,  int (*compare)(int a, int b))
 	while (st)
 	{
 		dt = st->data;
+		chunk = dt->chunk;
+		if (chunk != current_chunk)
+			break ;
 		if (!compare(data, get_number(st->data)))
 			return (0);
 		data =  get_number(st->data);
 		st = st->next;
 	}
 	return (1);
+}
+
+
+int		is_sorted3(t_stack *st, int (*compare)(int, int))
+{
+	int		data;
+
+	if(!st)
+		return (1);
+	data = get_number(st->data);
+	st = st->next;
+	while (st)
+	{
+		if (!compare(data, get_number(st->data)))
+			return (0);
+		data = get_number(st->data);
+		st = st->next;
+	}
+	return (1);
+}
+
+void	printchunks(t_stack *a, t_stack *b)
+{
+	t_data	*dt;
+
+	printf("A\n");
+	while (a)
+	{
+		dt = a->data;
+		printf("number %d --> chunk %d\n", dt->number, dt->chunk);
+		a = a->next;
+	}
+	printf("B\n");
+	while (b)
+	{
+		dt = b->data;
+		printf("number %d --> chunk %d\n", dt->number, dt->chunk);
+		b = b->next;
+	}
 }
 
 void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int a, int b), int *chun)
@@ -192,13 +234,32 @@ void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int
 	int		current_chunk;
 	int		chunk;
 
-	if (is_sorted2(*stack, check_pivot))
+	if (!*stack)
 		return ;
+	if (is_sorted2(*stack, check_pivot))
+	{
+		data = (*stack)->data;
+		current_chunk = data->chunk;
+		chunk = current_chunk;
+		while (chunk == current_chunk)
+		{
+			data->chunk = *chun;
+			(*stack)->data = data;
+			from_a2b(stack, reverse_stack);
+			if (!*stack)
+				break;
+			data = (*stack)->data;
+			chunk = data->chunk;
+		}
+		(*chun)++;
+		print2_stack(*reverse_stack, *stack);
+		printchunks(*reverse_stack, *stack);
+		//quicksort2(stack, reverse_stack, check_pivot, chun);
+		return ;
+	}
 	len = count_length(*stack);
 	if (len == 2)
-	{
-		rotate_stack_up(stack);
-	}
+		swap_first2(stack);
 	if (len <= 2)
 	{
 		data = (*stack)->data;
@@ -214,6 +275,8 @@ void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int
 			data = (*stack)->data;
 			chunk = data->chunk;
 		}
+		(*chun)++;
+		//quicksort2(stack, reverse_stack, check_pivot, chun);
 		return ;
 	}
 	pivot = pick_pivot(*stack);
@@ -231,17 +294,16 @@ void	quicksort2(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int
 			from_a2b(stack, reverse_stack);
 		}
 		else
-		{
 			rotate_stack_up(stack);
-		}
 		data = (*stack)->data;
 		chunk = data->chunk;
 	}
 	(*chun)++;
-	//print2_stack(*reverse_stack, *stack);
-	quicksort2(stack, reverse_stack, check2,  chun);
+	print2_stack(*stack, *reverse_stack);
 	quicksort(reverse_stack, stack, check1,  chun);
+	quicksort2(stack, reverse_stack, check2,  chun);
 }
+
 void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int a, int b), int *chun)
 {
 	int		pivot;
@@ -250,31 +312,13 @@ void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int 
 	int		current_chunk;
 	int		chunk;
 
-	if (is_sorted2(*stack, check_pivot))
+	if (is_sorted3(*stack, check_pivot))
 		return ;
 	len = count_length(*stack);
-	if (len == 2)
-	{
-		rotate_stack_up(stack);
-	}
+	if (len == 2 && !is_sorted2(*stack, check_pivot))
+		swap_first2(stack);
 	if (len <= 2)
-	{
-		data = (*stack)->data;
-		current_chunk = data->chunk;
-		chunk = current_chunk;
-		while (chunk == current_chunk)
-		{
-			data->chunk = *chun;
-			(*stack)->data = data;
-			from_a2b(stack, reverse_stack);
-			if (!*stack)
-				break;
-			data = (*stack)->data;
-			chunk = data->chunk;
-		}
 		return ;
-	}
-	//data = (*stack)->data;
 	pivot = pick_pivot(*stack);
 	printf("pivot --> %d\n", pivot);
 	data = (*stack)->data;
@@ -290,14 +334,13 @@ void	quicksort(t_stack **stack, t_stack **reverse_stack, int (*check_pivot)(int 
 			from_a2b(stack, reverse_stack);
 		}
 		else
-		{
 			rotate_stack_up(stack);
-		}
 		data = (*stack)->data;
 		chunk = data->chunk;
 	}
 	(*chun)++;
-	//print2_stack(*stack, *reverse_stack);
+	print2_stack(*stack, *reverse_stack);
+	printchunks(*stack, *reverse_stack);
 	quicksort(stack, reverse_stack, check1, chun);
 	quicksort2(reverse_stack, stack, check2, chun);
 }
@@ -310,6 +353,7 @@ int		main(int argc, char *argv[])
 	insert_numbers(&a, argc, argv);
 	print2_stack(a, b);
 	quicksort(&a, &b, check1, &chun);
+	
 	printf("last\n");
 	print2_stack(a, b);
 	printf("%d\n", chun);

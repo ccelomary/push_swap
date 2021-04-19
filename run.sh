@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc stack/srcs/ft_main_method.c ft_push_swap/srcs/print_stack.c \
+gcc -g stack/srcs/ft_main_method.c ft_push_swap/srcs/print_stack.c \
 				libiti/srcs/print_number.c  libiti/srcs/string2number.c  \
 				print/apply_flags.c print/checker_flags.c print/display.c \
 				dt/linkedlist/linkedlist_method.c dt/linkedlist/linkedlist_method2.c \

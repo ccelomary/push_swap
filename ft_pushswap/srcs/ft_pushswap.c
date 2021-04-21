@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/21 02:13:08 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/21 14:11:53 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,6 +359,50 @@ void		update_data(t_stack **st, int *iterchunk)
 	data->chunk = *iterchunk;
 	(*st)->data = data;
 }
+
+void		three_numbers(t_stack **current_st)
+{
+	size_t		len;
+	int			*buffer;
+
+	len = count_length(*current_st);
+	buffer = malloc(sizeof(int) * len);
+	copy2buffer(buffer, *current_st);
+	if (buffer[0] < buffer[1] && buffer[1] < buffer[2])
+	{
+		free(buffer);
+		return ;
+	}
+	else if (buffer[0] < buffer[1] && buffer[2] > buffer[0])
+	{
+		print("sa\nra\n");
+		swap_first2(current_st);
+		rotate_stack_up(current_st);
+	}
+	else if (buffer[0] > buffer[1] && buffer[0] < buffer[2])
+	{
+		print("sa\n");
+		swap_first2(current_st);
+	}
+	else if (buffer[0] < buffer[1] && buffer[1] > buffer[2])
+	{
+		print("rra\n");
+		rotate_stack_down(current_st);
+	}
+	else if (buffer[0] > buffer[1] && buffer[1] < buffer[2])
+	{
+		print("ra\n");
+		rotate_stack_up(current_st);
+	}
+	else if (buffer[0] > buffer[1] && buffer[1] > buffer[2])
+	{
+		print("sa\nrra\n");
+		swap_first2(current_st);
+		rotate_stack_down(current_st);
+	}
+	free(buffer);
+}
+
 void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b));
 void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b))
 {
@@ -486,6 +530,11 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 			print("sa\n");
 			swap_first2(current_st);
 		}
+		return ;
+	}
+	if (len_st == 3)
+	{
+		three_numbers(current_st);
 		return ;
 	}
 	chunk = get_max_chunk(*current_st);

@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/20 16:53:24 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/21 01:10:50 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ int		is_followed(t_stack *st, int  chunk)
 	t_data  *dt;
 
 	dt = st->data;
-	if (dt->chunk == ((t_data *)st->next->data)->chunk)
+	if (dt->chunk == ((t_data *)st->next->data)->chunk && dt->chunk == chunk)
 		return (1);
 	return (0);
 }
@@ -297,10 +297,11 @@ void		get_number2top(t_stack **st, int number, const char *oper, int *iterchunk)
 	dt = (*st)->data;
 	while (dt->number != number)
 	{
-		if (isequal(oper, "ra"))
+		if (isequal(oper, "ra") || isequal(oper, "rb"))
 			rotate_stack_up(st);
 		else
 			rotate_stack_down(st);
+		print("%s\n", oper);
 		dt = (*st)->data;
 	}
 	dt->chunk = *iterchunk;
@@ -348,6 +349,15 @@ int			number2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
 	}
 	return (0);
 }
+
+void		update_data(t_stack **st, int *iterchunk)
+{
+	t_data	*data;
+
+	data = (*st)->data;
+	data->chunk = *iterchunk;
+	(*st)->data = data;
+}
 void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b));
 void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b))
 {
@@ -371,8 +381,14 @@ void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int
 			if (is_followed(*current_st, chunk))
 			{
 				if (!is_sorted2(*current_st, compare))
+				{
+					print("sb\n");
 					swap_first2(current_st);
+				}
+				print("pa\npa\n");
+				update_data(current_st, iterchunk);
 				from_a2b(current_st, reverse_st);
+				update_data(current_st, iterchunk);
 				from_a2b(current_st, reverse_st);
 			}
 			else
@@ -382,16 +398,18 @@ void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int
 					last_number = get_last_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
 					if (position > (len_st / 2))
-						get_number2top(current_st, last_number, "rra", iterchunk);
+						get_number2top(current_st, last_number, "rrb", iterchunk);
 					else
-						get_number2top(current_st, last_number, "ra", iterchunk);
+						get_number2top(current_st, last_number, "rb", iterchunk);
+					print("pa\n");
 					from_a2b(current_st, reverse_st);
 					last_number = get_last_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
 					if (position > (len_st / 2))
-						get_number2top(current_st, last_number, "rra", iterchunk);
+						get_number2top(current_st, last_number, "rrb", iterchunk);
 					else
-						get_number2top(current_st, last_number, "ra", iterchunk);
+						get_number2top(current_st, last_number, "rb", iterchunk);
+					print("pa\n");
 					from_a2b(current_st, reverse_st);
 				}
 				else
@@ -399,16 +417,18 @@ void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int
 					last_number = get_first_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
 					if (position > (len_st / 2))
-						get_number2top(current_st, last_number, "rra", iterchunk);
+						get_number2top(current_st, last_number, "rrb", iterchunk);
 					else
-						get_number2top(current_st, last_number, "ra", iterchunk);
+						get_number2top(current_st, last_number, "rb", iterchunk);
+					print("pa\n");
 					from_a2b(current_st, reverse_st);
 					last_number = get_last_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
 					if (position > (len_st / 2))
-						get_number2top(current_st, last_number, "rra", iterchunk);
+						get_number2top(current_st, last_number, "rrb", iterchunk);
 					else
-						get_number2top(current_st, last_number, "ra", iterchunk);
+						get_number2top(current_st, last_number, "rb", iterchunk);
+					print("pa\n");
 					from_a2b(current_st, reverse_st);
 				}
 			}
@@ -418,30 +438,31 @@ void		quicksort2(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int
 			last_number = get_last_one(*current_st, chunk);
 			position = get_number_position(*current_st, last_number);
 			if (position > (len_st / 2))
-				get_number2top(current_st, last_number, "rra", iterchunk);
+				get_number2top(current_st, last_number, "rrb", iterchunk);
 			else
-				get_number2top(current_st, last_number, "ra", iterchunk);
+				get_number2top(current_st, last_number, "rb", iterchunk);
+			print("pa\n");
 			from_a2b(current_st, reverse_st);
 		}
 	}
 	else
 	{
 		pivot = pick_pivot(*current_st);
-		printf("%d\n", pivot);
 		while (compare2pivot(*current_st, pivot, chunk, compare))
 		{
 			last_number = number2pivot(*current_st, pivot, chunk, compare);
 			position = get_number_position(*current_st, last_number);
 			if (position > (len_st / 2))
-				get_number2top(current_st, last_number, "rra", iterchunk);
+				get_number2top(current_st, last_number, "rrb", iterchunk);
 			else
-				get_number2top(current_st, last_number, "ra", iterchunk);
+				get_number2top(current_st, last_number, "rb", iterchunk);
+			print("pa\n");
 			from_a2b(current_st, reverse_st);
 		}
 	}
 	*iterchunk += 1;
 	quicksort(reverse_st, current_st, iterchunk, check1);
-	quicksort2(current_st, reverse_st, iterchunk, compare);
+	quicksort2(current_st, reverse_st, iterchunk, check2);
 }
 
 void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b))
@@ -460,7 +481,10 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 	if (len_st <= 2)
 	{
 		if (!is_sorted2(*current_st, compare))
+		{
+			print("sa\n");
 			swap_first2(current_st);
+		}
 		return ;
 	}
 	chunk = get_max_chunk(*current_st);
@@ -472,8 +496,15 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 			if (is_followed(*current_st, chunk))
 			{
 				if (!is_sorted2(*current_st, compare))
+				{
+					print("sa\n");
 					swap_first2(current_st);
+				}
+				update_data(current_st, iterchunk);
+				print("pb\n");
 				from_a2b(current_st, reverse_st);
+				update_data(current_st, iterchunk);
+				print("pb\n");
 				from_a2b(current_st, reverse_st);
 			}
 			else
@@ -486,6 +517,7 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 						get_number2top(current_st, last_number, "rra", iterchunk);
 					else
 						get_number2top(current_st, last_number, "ra", iterchunk);
+					print("pb\n");
 					from_a2b(current_st, reverse_st);
 					last_number = get_last_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
@@ -493,6 +525,7 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 						get_number2top(current_st, last_number, "rra", iterchunk);
 					else
 						get_number2top(current_st, last_number, "ra", iterchunk);
+					print("pb\n");
 					from_a2b(current_st, reverse_st);
 				}
 				else
@@ -510,6 +543,7 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 						get_number2top(current_st, last_number, "rra", iterchunk);
 					else
 						get_number2top(current_st, last_number, "ra", iterchunk);
+					print("pb\n");
 					from_a2b(current_st, reverse_st);
 				}
 			}
@@ -522,13 +556,13 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 				get_number2top(current_st, last_number, "rra", iterchunk);
 			else
 				get_number2top(current_st, last_number, "ra", iterchunk);
+			print("pb\n");
 			from_a2b(current_st, reverse_st);
 		}
 	}
 	else
 	{
 		pivot = pick_pivot(*current_st);
-		printf("%d\n", pivot);
 		while (compare2pivot(*current_st, pivot, chunk, compare))
 		{
 			last_number = number2pivot(*current_st, pivot, chunk, compare);
@@ -537,11 +571,12 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 				get_number2top(current_st, last_number, "rra", iterchunk);
 			else
 				get_number2top(current_st, last_number, "ra", iterchunk);
+			print("pb\n");
 			from_a2b(current_st, reverse_st);
 		}
 	}
 	*iterchunk += 1;
-	quicksort(current_st, reverse_st, iterchunk, compare);
+	quicksort(current_st, reverse_st, iterchunk, check1);
 	quicksort2(reverse_st, current_st, iterchunk, check2);
 }
 
@@ -551,12 +586,7 @@ int		main(int argc, char *argv[])
 	t_stack		*b = init_stack();
 	int			chun = 1;
 	insert_numbers(&a, argc, argv);
-	print2_stack(a, b);
 	quicksort(&a, &b, &chun, check1);
-	
-	printf("last\n");
-	print2_stack(a, b);
-	printchunks(a, b);
-	printf("%d\n", chun);
+	//print2_stack(a, b);
 	return (0);
 }

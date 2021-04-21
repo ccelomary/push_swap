@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:34:52 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/21 17:16:53 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/21 17:30:52 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ typedef struct s_args
 	char		*push2;
 }				t_args;
 
+typedef struct s_largs
+{
+	t_args		*args;
+	int			*iterchunk;
+	int			chunk;
+	int			(*comp)(int, int);
+}				t_largs;
 
 void		sn(t_stack **st, const char *oper)
 {
@@ -70,6 +77,17 @@ void		push_selectednumber(t_stack **current_st, t_stack **reversed_st, int *iter
 	else
 		get_number2top(current_st, number, args.lower, iterchunk);
 	pn(current_st, reverse_st, args.push2, iterchunk);
+}
+
+
+void		init_largs(t_args args, int iterchunk, int (*comp)(int, int))
+void		initcase2(t_largs)
+{
+	t_largs	args;
+
+	args.args = args;
+	args.iterchunk = iterchunk;
+	args.comp = comp;
 }
 
 void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int (*compare)(int a, int b))

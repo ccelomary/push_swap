@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/21 01:10:50 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/21 02:13:08 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int		get_number_position(t_stack *st, int number)
 		dt = st->data;
 		if (dt->number == number)
 			return (pos);
+		pos++;
 		st = st->next;
 	}
 	return (-1);
@@ -536,6 +537,7 @@ void		quicksort(t_stack **current_st, t_stack **reverse_st, int *iterchunk, int 
 						get_number2top(current_st, last_number, "rra", iterchunk);
 					else
 						get_number2top(current_st, last_number, "ra", iterchunk);
+					print("pb\n");
 					from_a2b(current_st, reverse_st);
 					last_number = get_last_one(*current_st, chunk);
 					position = get_number_position(*current_st, last_number);
@@ -588,5 +590,6 @@ int		main(int argc, char *argv[])
 	insert_numbers(&a, argc, argv);
 	quicksort(&a, &b, &chun, check1);
 	//print2_stack(a, b);
+	//printf("is sorted %d\n", is_sorted(a));
 	return (0);
 }

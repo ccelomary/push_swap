@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/Users/mel-omar/goinfre/.brew/opt/python@3.8/bin/python3.8
 import random
 import	sys
 

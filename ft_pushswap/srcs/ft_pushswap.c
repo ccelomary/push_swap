@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:56:13 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 16:38:14 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:07:09 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int	main(int argc, char *argv[])
 	chunk = 1;
 	if (argc > 1 && !insert_numbers(&a, argc, argv))
 		quicksort(&a, &b, &chunk, check1);
+	else if (argc < 2)
+		print_error("ERROR\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:05:10 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 15:22:48 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:01:53 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_first_one(t_stack *st, int chunk)
 }
 
 void	get_number2top(t_stack **st, int number,
-	const char *oper, int *iterchunk)
+	const char *oper)
 {
 	t_data		*dt;
 

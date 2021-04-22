@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:36:18 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 14:48:58 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:02:13 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			number2pivot(t_stack *st, int pivot,
 				int chunk, int (*compare)(int, int));
 void		update_data(t_stack **st, int *iterchunk);
 void		get_number2top(t_stack **st, int number,
-				const char *oper, int *iterchunk);
+				const char *oper);
 int			compare2pivot(t_stack *st, int pivot, int chunk,
 				int (*compare)(int, int));
 size_t		count_length(t_stack *st);

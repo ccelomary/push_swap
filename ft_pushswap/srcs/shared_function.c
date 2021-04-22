@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 21:19:46 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 15:17:01 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:02:51 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ t_stack **reversed_st, int *iterchunk, t_args	args)
 
 	number = args.f(*current_st, args.chunk);
 	position = get_number_position(*current_st, number);
-	if (position > (args.len_st / 2))
-		get_number2top(current_st, number, args.upper, iterchunk);
+	if (position > (int)(args.len_st / 2))
+		get_number2top(current_st, number, args.upper);
 	else
-		get_number2top(current_st, number, args.lower, iterchunk);
+		get_number2top(current_st, number, args.lower);
 	pn(current_st, reversed_st, args.push2, iterchunk);
 }
 
@@ -82,10 +82,10 @@ int chunk, int (*compare)(int a, int b)))
 	{
 		number = get_numberpvt(*current_st, pivot, args.args.chunk, args.comp);
 		position = get_number_position(*current_st, number);
-		if (position > (args.args.len_st / 2))
-			get_number2top(current_st, number, args.args.upper, args.iterchunk);
+		if (position > (int)(args.args.len_st / 2))
+			get_number2top(current_st, number, args.args.upper);
 		else
-			get_number2top(current_st, number, args.args.lower, args.iterchunk);
+			get_number2top(current_st, number, args.args.lower);
 		pn(current_st, reverse_st, args.args.push2, args.iterchunk);
 	}
 }

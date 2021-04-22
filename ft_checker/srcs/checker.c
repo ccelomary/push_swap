@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:05:07 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 14:31:27 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:06:43 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 		else
 			print("KO\n");
 	}
+	else if (argc < 2)
+		print_error("ERROR\n");
 	clear_stack(&a, free);
 	clear_stack(&b, free);
 	return (0);

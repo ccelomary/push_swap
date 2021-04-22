@@ -10,4 +10,8 @@ gcc  stack/srcs/ft_main_method.c ft_push_swap/srcs/print_stack.c \
 				ft_push_swap/srcs/operation_stack2.c libiti/srcs/compare_str.c \
 				ft_push_swap/srcs/operation_stack.c libiti/srcs/is_number.c readline/srcs/readline.c \
 				libiti/srcs/joinstr.c libiti/srcs/ft_cstrlen.c libiti/srcs/print_errors.c ft_push_swap/srcs/apply_operation.c \
-				ft_pushswap/srcs/ft_pushswap.c ft_pushswap/srcs/dict_operation.c -o f
+				ft_pushswap/srcs/ft_pushswap.c ft_pushswap/srcs/shared_function.c ft_pushswap/srcs/shared_function2.c \
+				ft_pushswap/srcs/shared_function3.c ft_pushswap/srcs/shared_function4.c \
+				ft_pushswap/srcs/shared_function5.c ft_pushswap/srcs/shared_function6.c \
+				ft_pushswap/srcs/shared_function7.c ft_pushswap/srcs/quicksort.c \
+				ft_pushswap/srcs/quicksort2.c -o f

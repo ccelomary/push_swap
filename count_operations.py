@@ -1,4 +1,4 @@
-#!/Users/mel-omar/goinfre/.brew/opt/python@3.8/bin/python3.8
+#!/usr/bin/python3.8
 
 if __name__ == "__main__":
 	counter = 0

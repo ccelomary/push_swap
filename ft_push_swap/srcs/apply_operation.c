@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:55:30 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 14:39:54 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:28:22 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ static void	free_dt(void *kv)
 	free(key_value);
 }
 
+void	error_printer(t_map **map, void (*free_dt)(void *dt))
+{
+	clear_map(map, free_dt);
+	print_error("ERROR\n");
+}
+
+int	verify_numbers(t_map **map, char *strnumber, t_stack **stack)
+{
+	long	number;
+
+	set_value(*map, strnumber, "", ft_cstrlen(strnumber));
+	number = string2number(strnumber);
+	if (ft_cstrlen(strnumber) > 11 || number > 2147483647
+		|| number < -2147483648)
+	{
+		error_printer(map, free_dt);
+		return (1);
+	}
+	push_number(stack, number);
+	return (0);
+}
+
 int	insert_numbers(t_stack **stack, int argc, char *numbers[])
 {
 	t_map	*repeated;
@@ -31,13 +53,12 @@ int	insert_numbers(t_stack **stack, int argc, char *numbers[])
 		if (is_number(numbers[argc])
 			&& !get_value(repeated, numbers[argc], ft_cstrlen(numbers[argc])))
 		{
-			set_value(repeated, numbers[argc], "", ft_cstrlen(numbers[argc]));
-			push_number(stack, string2number(numbers[argc]));
+			if (verify_numbers(&repeated, numbers[argc], stack))
+				return (1);
 		}
 		else
 		{
-			clear_map(&repeated, free_dt);
-			print_error("ERROR\n");
+			error_printer(&repeated, free_dt);
 			return (1);
 		}
 	}
@@ -70,5 +91,5 @@ void	execute_operation(const char *operation, t_stack **a, t_stack **b)
 	else if (isequal(operation, "rrr"))
 		rotate_down_ab(a, b);
 	else
-		print("undifined operation '%s'\n", operation);
+		print_error("undifined operator\n");
 }

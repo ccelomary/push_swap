@@ -6,32 +6,30 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 14:55:30 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/15 11:13:16 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:39:54 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pushswap.h"
-
-#include <stdio.h>
 
 static void	free_dt(void *kv)
 {
 	t_key_value		*key_value;
 
 	key_value = (t_key_value *)kv;
-
 	free(key_value->key);
 	free(key_value);
 }
 
-int		insert_numbers(t_stack **stack, int argc, char *numbers[])
+int	insert_numbers(t_stack **stack, int argc, char *numbers[])
 {
 	t_map	*repeated;
 
 	repeated = init_map();
 	while (--argc > 0)
 	{
-		if (is_number(numbers[argc]) && !get_value(repeated, numbers[argc], ft_cstrlen(numbers[argc])))
+		if (is_number(numbers[argc])
+			&& !get_value(repeated, numbers[argc], ft_cstrlen(numbers[argc])))
 		{
 			set_value(repeated, numbers[argc], "", ft_cstrlen(numbers[argc]));
 			push_number(stack, string2number(numbers[argc]));

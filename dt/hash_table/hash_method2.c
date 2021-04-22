@@ -6,13 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 15:17:26 by mel-omar          #+#    #+#             */
-/*   Updated: 2020/02/09 15:28:18 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:34:38 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_map.h"
 
-t_list		*get_keys(const t_map *map)
+t_list	*get_keys(const t_map *map)
 {
 	t_list			*list;
 	t_list			*lst;
@@ -35,7 +35,7 @@ t_list		*get_keys(const t_map *map)
 	return (list);
 }
 
-void		*copy_key(const unsigned char *key, size_t key_size)
+void	*copy_key(const unsigned char *key, size_t key_size)
 {
 	size_t			iter;
 	unsigned char	*dst;

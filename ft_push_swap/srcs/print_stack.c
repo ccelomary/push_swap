@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 13:07:47 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/15 11:10:59 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:44:23 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ static void	print_right(t_data *db)
 {
 	print("%8s  %.08d\n", "", db->number);
 }
+
 static void	print_bottom(void)
 {
 	print("----      ----\n");
 	print("%2s        %2s\n", "a", "b");
 }
 
-void		print2_stack(const t_stack *a, const t_stack *b)
+void	print2_stack(const t_stack *a, const t_stack *b)
 {
 	t_stack		*temp;
-	void (*printer)(t_data *dt);
+	void		(*printer)(t_data *dt);
 
 	while (a && b)
 	{
@@ -51,7 +52,7 @@ void		print2_stack(const t_stack *a, const t_stack *b)
 	else
 	{
 		temp = (t_stack *)a;
-		printer  = print_left;
+		printer = print_left;
 	}
 	while (temp)
 	{

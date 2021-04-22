@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-omar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-omar@student.1337.ma <mel-omar>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 17:34:25 by mel-omar          #+#    #+#             */
-/*   Updated: 2020/02/07 16:34:15 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:35:41 by mel-omar@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_flags(t_flags *f)
 	f->perc = -1;
 }
 
-int		is_inset(char c, char *s)
+int	is_inset(char c, char *s)
 {
 	while (*s)
 	{

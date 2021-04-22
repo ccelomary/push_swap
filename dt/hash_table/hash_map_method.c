@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hash_map_method.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-omar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 15:18:24 by mel-omar          #+#    #+#             */
-/*   Updated: 2020/02/09 15:25:47 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:32:51 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_map.h"
 
-t_map			*init_map(void)
+t_map	*init_map(void)
 {
 	int		iter;
 	t_map	*map;
@@ -27,7 +27,7 @@ t_map			*init_map(void)
 	return (map);
 }
 
-int				get_hash_code(const void *key, size_t key_size)
+int	get_hash_code(const void *key, size_t key_size)
 {
 	int				result;
 	size_t			iter;
@@ -44,7 +44,7 @@ int				get_hash_code(const void *key, size_t key_size)
 	return (result % SIZE);
 }
 
-void			set_value(t_map *map, const void *key,
+void	set_value(t_map *map, const void *key,
 		void *value, size_t key_size)
 {
 	int				backet_id;
@@ -71,7 +71,7 @@ void			set_value(t_map *map, const void *key,
 	return ;
 }
 
-void			*get_value(t_map *map, const void *key, size_t key_size)
+void	*get_value(t_map *map, const void *key, size_t key_size)
 {
 	int		id;
 	t_list	*list;
@@ -89,7 +89,7 @@ void			*get_value(t_map *map, const void *key, size_t key_size)
 	return (NULL);
 }
 
-void			clear_map(t_map **map, void free_data(void *kv))
+void	clear_map(t_map **map, void free_data(void *kv))
 {
 	int		iter;
 

@@ -6,13 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 15:29:31 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/13 12:48:03 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:32:23 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hash_map.h"
 
-int				compare(const void *val1, const void *val2, size_t key_size)
+int	compare(const void *val1, const void *val2, size_t key_size)
 {
 	size_t			iter;
 	unsigned char	*v1;
@@ -28,7 +28,7 @@ int				compare(const void *val1, const void *val2, size_t key_size)
 	return (1);
 }
 
-t_key_value		*init_kv(void *key, void *value)
+t_key_value	*init_kv(void *key, void *value)
 {
 	t_key_value		*k_v;
 

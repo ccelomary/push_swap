@@ -6,14 +6,14 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 13:05:01 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/15 12:06:28 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 14:36:27 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 # include "../../stack/include/stack.h"
-#include "../../dt/hash_table/hash_map.h"
+# include "../../dt/hash_table/hash_map.h"
 # include "../../libiti/include/libiti.h"
 # include "../../print/print.h"
 

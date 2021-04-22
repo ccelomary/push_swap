@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 18:16:33 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 18:21:34 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:48:19 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	length(const char *string)
 	return (len);
 }
 
-char		*ft_strdup(const char *string)
+char	*ft_strdup(const char *string)
 {
 	char	*str;
 	size_t	iterator;

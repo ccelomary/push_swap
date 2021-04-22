@@ -6,13 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:43:43 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/06 13:53:10 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:56:36 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/readline.h"
 
-static char		getchar(int fd)
+static char	getchar(int fd)
 {
 	char	c;
 
@@ -20,13 +20,12 @@ static char		getchar(int fd)
 	return (c);
 }
 
-
 char	*readline(int fd)
 {
-	char 		*line;
-	char 		c;
+	char		*line;
+	char		c;
 
-	line  = NULL;
+	line = NULL;
 	c = getchar(fd);
 	while (c != '\n')
 	{

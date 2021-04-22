@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:48:18 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/05 16:23:55 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:50:20 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	print_number_helper(long num)
 		write(1, &c, sizeof(char));
 	}
 }
-void		print_number(int number)
+
+void	print_number(int number)
 {
 	long	num;
 

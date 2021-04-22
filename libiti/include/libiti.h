@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:47:29 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/12 14:45:25 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 16:07:09 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 
 void		print_number(int number);
-int			string2number(const char *string);
+long		string2number(const char *string);
 int			isequal(const char *s1, const char *s2);
 int			isdigits(char c);
 int			is_number(const char *number);

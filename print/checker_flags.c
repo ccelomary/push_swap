@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-omar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mel-omar <mel-omar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 18:18:38 by mel-omar          #+#    #+#             */
-/*   Updated: 2020/02/06 18:29:58 by mel-omar         ###   ########.fr       */
+/*   Updated: 2020/02/12 15:39:18 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	check_flags(char **format, t_flags *f)
 		if (**format >= '0' && **format <= '9')
 		{
 			if (f->is_perc)
-				f->perc = ft_atoi(format);
+				f->perc = ft_catoi(format);
 			else
-				f->width = ft_atoi(format);
+				f->width = ft_catoi(format);
 		}
 		else if (**format == '.')
 		{

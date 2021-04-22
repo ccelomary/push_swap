@@ -6,12 +6,11 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 21:19:46 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 01:31:43 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:07:20 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
-#include <stdio.h>
 
 void		sn(t_stack **st, const char *oper)
 {

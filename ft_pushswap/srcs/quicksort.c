@@ -6,12 +6,11 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:34:52 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 01:47:34 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 02:07:09 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
-
 
 static int			check_stack_a(t_stack **current_st, size_t len_st, int (*comp)(int, int))
 {

@@ -6,13 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:11:33 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 00:13:22 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:23:27 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 
-int			number2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
+int	number2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
 {
 	t_data	*dt;
 
@@ -26,7 +26,7 @@ int			number2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
 	return (0);
 }
 
-void		update_data(t_stack **st, int *iterchunk)
+void	update_data(t_stack **st, int *iterchunk)
 {
 	t_data	*data;
 
@@ -35,16 +35,16 @@ void		update_data(t_stack **st, int *iterchunk)
 	(*st)->data = data;
 }
 
-static int get_number(t_data *dt)
+static int	get_number(t_data *dt)
 {
 	return (dt->number);
 }
 
-int		is_sorted3(t_stack *st, int (*compare)(int, int))
+int	is_sorted3(t_stack *st, int (*compare)(int, int))
 {
 	int		data;
 
-	if(!st)
+	if (!st)
 		return (1);
 	data = get_number(st->data);
 	st = st->next;

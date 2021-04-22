@@ -6,25 +6,25 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:01:48 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 00:04:48 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:20:51 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 
-int		check1(int a, int b)
+int	check1(int a, int b)
 {
 	return (a < b);
 }
 
-int		check2(int a, int b)
+int	check2(int a, int b)
 {
 	return (b < a);
 }
 
-int		is_followed(t_stack *st, int  chunk)
+int	is_followed(t_stack *st, int chunk)
 {
-	t_data  *dt;
+	t_data	*dt;
 
 	dt = st->data;
 	if (dt->chunk == ((t_data *)st->next->data)->chunk && dt->chunk == chunk)
@@ -32,7 +32,7 @@ int		is_followed(t_stack *st, int  chunk)
 	return (0);
 }
 
-int		is_sorted2(t_stack *st,  int (*compare)(int a, int b))
+int	is_sorted2(t_stack *st, int (*compare)(int a, int b))
 {
 	int		previous_number;
 	t_data	*data;
@@ -56,7 +56,7 @@ int		is_sorted2(t_stack *st,  int (*compare)(int a, int b))
 	return (1);
 }
 
-size_t		length_st(t_stack *st)
+size_t	length_st(t_stack *st)
 {
 	size_t	len;
 

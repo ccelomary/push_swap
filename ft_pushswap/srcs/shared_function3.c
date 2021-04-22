@@ -6,13 +6,13 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 23:55:30 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/21 23:59:32 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:18:39 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 
-int			get_max_chunk(t_stack *st)
+int	get_max_chunk(t_stack *st)
 {
 	t_data		*dt;
 	int			max_;
@@ -31,7 +31,7 @@ int			get_max_chunk(t_stack *st)
 	return (max_);
 }
 
-size_t		count_length(t_stack *st)
+size_t	count_length(t_stack *st)
 {
 	size_t	len;
 	t_data	*data;
@@ -79,7 +79,6 @@ void	sort_buffer(int *buffer, size_t len)
 
 	if (!len)
 		return ;
-
 	iter1 = 0;
 	while (iter1 < len - 1)
 	{
@@ -98,7 +97,7 @@ void	sort_buffer(int *buffer, size_t len)
 	}
 }
 
-int		pick_pivot(t_stack *st)
+int	pick_pivot(t_stack *st)
 {
 	size_t	len;
 	int		*buffer;

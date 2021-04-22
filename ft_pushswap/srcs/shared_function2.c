@@ -6,13 +6,14 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 23:51:06 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 00:49:41 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:17:50 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_pushswap.h"
 
-t_args		init_args(int chunk, int (*f)(t_stack *st, int chunk), size_t length_st, char which_st)
+t_args	init_args(int chunk, int (*f)(t_stack *st, int chunk),
+size_t length_st, char which_st)
 {
 	t_args		args;
 
@@ -36,7 +37,8 @@ t_args		init_args(int chunk, int (*f)(t_stack *st, int chunk), size_t length_st,
 	return (args);
 }
 
-t_largs		init_largs(t_args rargs, int *iterchunk, int (*comp)(int, int), char s)
+t_largs	init_largs(t_args rargs, int *iterchunk,
+int (*comp)(int, int), char s)
 {
 	t_largs	args;
 

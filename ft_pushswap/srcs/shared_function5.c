@@ -6,15 +6,15 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 00:05:10 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 00:10:56 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:22:48 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include  "../include/ft_pushswap.h"
 
-int		get_number_position(t_stack *st, int number)
+int	get_number_position(t_stack *st, int number)
 {
-	size_t 		pos;
+	size_t		pos;
 	t_data		*dt;
 
 	pos = 0;
@@ -29,7 +29,7 @@ int		get_number_position(t_stack *st, int number)
 	return (-1);
 }
 
-int			get_last_one(t_stack *st, int chunk)
+int	get_last_one(t_stack *st, int chunk)
 {
 	t_data	*data;
 	int		last_number;
@@ -44,7 +44,7 @@ int			get_last_one(t_stack *st, int chunk)
 	return (last_number);
 }
 
-int			get_first_one(t_stack *st, int chunk)
+int	get_first_one(t_stack *st, int chunk)
 {
 	t_data	*data;
 
@@ -58,9 +58,10 @@ int			get_first_one(t_stack *st, int chunk)
 	return (0);
 }
 
-void		get_number2top(t_stack **st, int number, const char *oper, int *iterchunk)
+void	get_number2top(t_stack **st, int number,
+	const char *oper, int *iterchunk)
 {
-	t_data *dt;
+	t_data		*dt;
 
 	dt = (*st)->data;
 	while (dt->number != number)
@@ -74,7 +75,7 @@ void		get_number2top(t_stack **st, int number, const char *oper, int *iterchunk)
 	}
 }
 
-int			compare2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
+int	compare2pivot(t_stack *st, int pivot, int chunk, int (*compare)(int, int))
 {
 	t_data	*data;
 

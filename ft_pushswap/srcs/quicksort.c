@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 15:34:52 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 00:39:55 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:47:34 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ int *iterchunk, int (*compare)(int a, int b))
 	chunk = get_max_chunk(*current_st);
 	len_chunk = count_length(*current_st);
 	if (len_chunk <= 2)
+	{
 		initcase2(current_st, reverse_st,
 		init_largs(init_args(chunk, NULL, len_st, 'a'),
 		iterchunk, compare, 'a'), len_chunk);
+	}
 	else
 	{
 		pivot_part(current_st, reverse_st,

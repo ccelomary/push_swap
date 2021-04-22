@@ -6,7 +6,7 @@
 /*   By: mel-omar <mel-omar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 21:19:46 by mel-omar          #+#    #+#             */
-/*   Updated: 2021/04/22 01:04:59 by mel-omar         ###   ########.fr       */
+/*   Updated: 2021/04/22 01:31:43 by mel-omar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		initcase2(t_stack **current_st, t_stack **reverse_st, t_largs args, size_t
 			{
 				if (!is_sorted2(*current_st, args.comp))
 					sn(current_st, args.args.swap);
-				print2_stack(*current_st, *reverse_st);
+				//print2_stack(*current_st, *reverse_st);
 				pn(current_st, reverse_st, args.args.push2, args.iterchunk);
 				pn(current_st, reverse_st, args.args.push2, args.iterchunk);
 				return ;
